@@ -8,15 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "department")
+@Table(name = "department")
 public class Department {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column( length = 100, nullable = false )
+
+	@Column(length = 100, nullable = false)
 	private String name;
+
 	public Department() {
 		super();
 	}

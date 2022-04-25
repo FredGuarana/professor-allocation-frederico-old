@@ -46,7 +46,7 @@ public class CourseService {
 		
 	}
 	
-	public Course indById(Long id) {
+	public Course findById(Long id) {
 		return repository.findById(id).orElse(null);
 		
 	}

@@ -10,28 +10,45 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
-import com.project.professorallocation.model.Allocation;
-import com.project.professorallocation.model.Professor;
-import com.project.professorallocation.repository.AllocationRepository;
+import com.project.professorallocation.model.Course;
+import com.project.professorallocation.repository.CourseRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 @TestPropertySource(locations = "classpath:application.properties")
-public class AllocationRepositoryTest {
+public class CourseRepositoryTests {
 
 	@Autowired
-	AllocationRepository allocationRepository;
+	CourseRepository repository;
 
 	@Test
 	public void findAll() {
+		List<Course> items = repository.findAll();
 
-		List<Allocation> items = allocationRepository.findAll();
-		System.out.println("Quantidade de alocações registrados: " + items.size());
+		System.out.println("Quantidade de cursos registrados: " + items.size());
 
-		for (Allocation item : items) {
+		for (Course item : items) {
 			System.out.println(item);
 		}
+	}
+
+	@Test
+	public void create() {
+		Course courseBeingCreated = new Course();
+		courseBeingCreated.setName("Backend");
+
+		courseBeingCreated = repository.save(courseBeingCreated);
+
+	}
+
+	@Test
+	public void update() {
+		Course courseBeingCreated = new Course();
+		courseBeingCreated.setId(2L);
+		courseBeingCreated.setName("Backend");
+
+		courseBeingCreated = repository.save(courseBeingCreated);
 
 	}
 

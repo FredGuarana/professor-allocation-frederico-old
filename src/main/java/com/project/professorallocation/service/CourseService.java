@@ -1,4 +1,4 @@
-package com.project.professorallocation.Service;
+package com.project.professorallocation.service;
 
 import java.util.List;
 

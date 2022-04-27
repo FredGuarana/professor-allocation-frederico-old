@@ -41,7 +41,7 @@ public class DepartmentRepositoryTests {
 	@Test
 	public void create() {
 		Department departmentBeingCreated = new Department();
-		departmentBeingCreated.setNome("Departamento de Física");
+		departmentBeingCreated.setName("Departamento de Física");
 
 		departmentBeingCreated = repository.save(departmentBeingCreated);
 
@@ -51,7 +51,7 @@ public class DepartmentRepositoryTests {
 	public void update() {
 		Department departmentBeingCreated = new Department();
 		departmentBeingCreated.setId(3L);
-		departmentBeingCreated.setNome("Departamento de Sociologia");
+		departmentBeingCreated.setName("Departamento de Sociologia");
 
 		departmentBeingCreated = repository.save(departmentBeingCreated);
 

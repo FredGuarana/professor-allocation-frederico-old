@@ -17,7 +17,7 @@ import com.project.professorallocation.model.Course;
 import com.project.professorallocation.service.CourseService;
 
 @RestController
-@RequestMapping(path = "/departments")
+@RequestMapping(path = "/courses")
 public class CourseController {
 	
 	private final CourseService service;
@@ -59,5 +59,5 @@ public class CourseController {
 		return new ResponseEntity<>(item,HttpStatus.CREATED);
 		
 	}
-
+	// curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Introducao a Programacao\"}" "http://localhost:8082/courses"
 }

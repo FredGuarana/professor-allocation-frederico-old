@@ -18,7 +18,7 @@ import com.project.professorallocation.model.Professor;
 import com.project.professorallocation.service.ProfessorService;
 
 @RestController
-@RequestMapping(path = "/departments")
+@RequestMapping(path = "/professors")
 public class ProfessorController {
 	
 	private final ProfessorService service;

@@ -57,5 +57,23 @@ public class DepartmentController {
 		return new ResponseEntity<>(item,HttpStatus.CREATED);
 		
 	}
+	
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus()
+	public ResponseEntity<Department> update(Long id, Department department) {
+	    department.setId(id);
+	    try {
+	        department = service.update(department);
+	        if (department == null) {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        } else {
+	            return new ResponseEntity<>(department, HttpStatus.OK);
+	        }
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	    }
+	}
+	
+	
 // curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Departamento de Biologia\"}" "http://localhost:8082/departments"
 }

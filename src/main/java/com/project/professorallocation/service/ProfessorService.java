@@ -17,7 +17,7 @@ public class ProfessorService {
 		this.repository = repository;
 	}
 
-	private Professor findById(Long id) {
+	public Professor findById(Long id) {
 		return repository.findById(id).orElse(null);
 	}
 

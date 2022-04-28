@@ -59,4 +59,7 @@ public class ProfessorController {
 		
 	}
 
+	// curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Jonata Valentim Covinha\",\"cpf\": \"23207031013\",\"department_id\": \"1\"}" "http://localhost:8082/professors"
+	// curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Departamento de Administracao\"}" "http://localhost:8082/professors/2"		
+	
 }

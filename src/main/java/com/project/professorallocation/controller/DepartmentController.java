@@ -84,12 +84,12 @@ public class DepartmentController {
 	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
-	@DeleteMapping
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public ResponseEntity<Void> deleteAll() {
-	    service.deleteAll();
-	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
+//	@DeleteMapping
+//	@ResponseStatus(HttpStatus.NO_CONTENT)
+//	public ResponseEntity<Void> deleteAll() {
+//	    service.deleteAll();
+//	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//	}
 	
 	
 	

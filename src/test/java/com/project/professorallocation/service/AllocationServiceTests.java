@@ -3,6 +3,7 @@ package com.project.professorallocation.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,14 +28,31 @@ public class AllocationServiceTests {
     AllocationService service;
     
     @Test
-    public void create() throws ParseException {
-    	Allocation allocation = new Allocation();
-    	allocation.setDayOfWeek(DayOfWeek.MONDAY);
-    	allocation.setProfessorId(2L);
-    	allocation.setCourseId(2L);
-    	allocation.setStartHour(sdf.parse("20:00-0300"));
-    	allocation.setEndHour(sdf.parse("22:00-0300"));
-    }
+	public void create() throws ParseException {
+		Allocation allocation = new Allocation();
+		allocation.setDayOfWeek(DayOfWeek.WEDNESDAY);
+		allocation.setProfessorId(3L);
+		allocation.setCourseId(1L);
+		allocation.setStartHour(sdf.parse("18:00-0300"));
+		allocation.setEndHour(sdf.parse("20:00-0300"));
+
+		allocation = service.create(allocation);
+
+		System.out.println(allocation);
+	}
+
+	@Test
+	public void findAll() {
+
+		List<Allocation> items = service.findAll();
+		System.out.println("Quantidade de alocações registrados: " + items.size());
+
+		for (Allocation item : items) {
+			System.out.println(item);
+		}
+
+	}
+
 
 
 }

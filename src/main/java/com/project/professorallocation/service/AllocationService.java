@@ -39,7 +39,7 @@ public class AllocationService {
 
 	private Allocation saveInternal(Allocation allocation) {
 		if (hasCollision(allocation)) {
-			throw new RuntimeException("Thre is a time cxollision at this allocation");
+			throw new RuntimeException("Thre is a time collision at this allocation");
 		}
 		Allocation createdAllocation = repository.save(allocation);
 		return createdAllocation;

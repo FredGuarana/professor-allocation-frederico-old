@@ -38,7 +38,7 @@ public class CourseService {
 
 	}
 
-	private void deleteById(Long id) {
+	public void deleteById(Long id) {
 		if (repository.existsById(id)) {
 		repository.deleteById(id);
 		}

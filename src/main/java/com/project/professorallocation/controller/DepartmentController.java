@@ -60,9 +60,9 @@ public class DepartmentController {
 		
 	}
 	
-	@PutMapping(path = "/{department_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(path = "/{dept_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Department> update(@PathVariable(name = "department_id") Long id, @RequestBody Department department) {
+	public ResponseEntity<Department> update(@PathVariable(name = "dept_id") Long id, @RequestBody Department department) {
 	    department.setId(id);
 	    try {
 	        department = service.update(department);
@@ -77,11 +77,11 @@ public class DepartmentController {
 		
 	}
 	
-	@DeleteMapping(path = "/{department_id}")
+	@DeleteMapping(path = "/{dept_id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public ResponseEntity<Void> deleteById(@PathVariable(name = "department_id") Long id) {
+	public ResponseEntity<Void> deleteById(@PathVariable(name = "dept_id") Long id) {
 	    service.deleteById(id);
-	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    return new ResponseEntity<>(HttpStatus.NO_CONTENT); // 204
 	}
 	
 //	@DeleteMapping

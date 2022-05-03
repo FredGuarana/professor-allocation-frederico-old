@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
@@ -49,10 +50,12 @@ public class Allocation {
 	@Column(nullable = false)
 	private Date endHour;
 	
+	
 	private Long courseId;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "courseId", nullable = false, insertable = false, updatable = false)
 	private Course course;
+	
 	
 	private Long professorId;
 	@ManyToOne(optional = false)

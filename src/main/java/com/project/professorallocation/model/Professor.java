@@ -1,5 +1,7 @@
 package com.project.professorallocation.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
@@ -22,13 +31,22 @@ public class Professor {
 	
 	@Column(length = 11, nullable = false)
 	private String cpf;
-	@Column(name = "department_id", nullable = false)
 	
+	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column(name = "department_id", nullable = false)
 	private Long department_id;
 	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonIgnoreProperties({"professors"})
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false)
 	private Department department;
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@OneToMany(mappedBy = "professor")
+	//private List<Allocation> allocations;
 	
 	public Department getDepartment() {
 		return department;

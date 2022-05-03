@@ -78,4 +78,11 @@ public class AllocationService {
 
 	}
 
+	public List<Allocation> findByProfessor(Long id) {
+		// TODO Auto-generated method stub
+		List<Allocation> allocation = repository.findByprofessorId(id);
+		
+		return allocation;
+	}
+
 }

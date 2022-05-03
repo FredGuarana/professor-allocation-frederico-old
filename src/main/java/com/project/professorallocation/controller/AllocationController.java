@@ -17,6 +17,10 @@ import com.project.professorallocation.model.Allocation;
 import com.project.professorallocation.model.Professor;
 import com.project.professorallocation.service.AllocationService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(path = "/allocations")
 public class AllocationController {
@@ -39,13 +43,20 @@ public class AllocationController {
 //			return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 //		}
 //	}
+	
+	@ApiOperation(value = "Find all allocations")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Allocation>> findAll() {
 		List<Allocation> allAllocations = service.findAll();
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
-
+	
+	@ApiOperation( value = "Finds an allocation by id")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse( code = 404, message ="aLLOCATION NOT FOUND")
+	})
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Allocation> findById(@PathVariable(name = "id") Long id) {
@@ -75,3 +86,4 @@ public class AllocationController {
 		}
 	}
 }
+//curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Jonata Valentim Covinha\",\"cpf\": \"23207031013\",\"department_id\": \"1\"}" "http://localhost:8082/professors"

@@ -32,18 +32,6 @@ public class AllocationController {
 		this.service = service;
 	}
 
-//	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-//	@ResponseStatus(HttpStatus.OK)
-//	public ResponseEntity<List<Allocation>> findAll(@PathVariable(name = "id") Long id) {
-//		List<Allocation> allAllocations = service.findAll();
-//		if (allAllocations == null) {
-//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		}else {
-//			
-//			return new ResponseEntity<>(allAllocations, HttpStatus.OK);
-//		}
-//	}
-	
 	@ApiOperation(value = "Find all allocations")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
@@ -51,12 +39,11 @@ public class AllocationController {
 		List<Allocation> allAllocations = service.findAll();
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
-	
-	@ApiOperation( value = "Finds an allocation by id")
-	@ApiResponses({
+
+	@ApiOperation(value = "Finds an allocation by id")
+	@ApiResponses({ 
 		@ApiResponse(code = 200, message = "OK"),
-		@ApiResponse( code = 404, message ="aLLOCATION NOT FOUND")
-	})
+		@ApiResponse(code = 404, message = "ALLOCATION NOT FOUND") })
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Allocation> findById(@PathVariable(name = "id") Long id) {
@@ -67,7 +54,10 @@ public class AllocationController {
 			return new ResponseEntity<>(allocation, HttpStatus.OK);
 		}
 	}
-
+	
+	@ApiResponses({ 
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 404, message = "PROFESSOR NOT FOUND") })
 	@GetMapping(path = "/professor/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Allocation>> findByProfessor(@PathVariable(name = "id") Long id) {
@@ -75,6 +65,9 @@ public class AllocationController {
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
 
+	@ApiResponses({ 
+		@ApiResponse(code = 200, message = "CREATED"),
+		@ApiResponse(code = 404, message = "BAD REQUEST") })
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Allocation> create(@RequestBody Allocation allocation) {
